@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Bullet
+  - Monster
+  - Hittable
+  - ObstaclesMovement
   - 
   - 
   - 
@@ -38,12 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
+  - name: Ground
     uniqueID: 312196683
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Foreground
+  - name: Enemies
+    uniqueID: 3834506575
+    locked: 0
+  - name: Player
+    uniqueID: 3975326619
+    locked: 0
+  - name: Bullets
     uniqueID: 3317615933
+    locked: 0
+  - name: UI
+    uniqueID: 3368976077
     locked: 0
