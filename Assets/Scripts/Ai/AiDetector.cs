@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class AiDetector : MonoBehaviour
 {
-    [Range(1,15)]
+
     [SerializeField]
-    private float viewRadius = 11;
+    private float viewRadius = 41;
+    [SerializeField]
+    private float attackRadius = 2;
     [SerializeField]
     private float detectionCheckDelay = 0.1f;
+    [SerializeField]
     private Transform target = null;
     [SerializeField]
     private LayerMask playerLayerMask;
@@ -17,6 +20,8 @@ public class AiDetector : MonoBehaviour
 
     [field: SerializeField]
     public bool TargetVisible {get; private set;}
+    [field: SerializeField]
+    public bool TargetAttackable {get; private set;}
     public Transform Target
     {
         get => target;
@@ -24,6 +29,7 @@ public class AiDetector : MonoBehaviour
         {
             target = value;
             TargetVisible = false;
+            TargetAttackable = false;
         }
     }
 
@@ -34,6 +40,7 @@ public class AiDetector : MonoBehaviour
     private void Update() {
         if (Target != null)
             TargetVisible = CheckTargetVisible();
+            TargetAttackable = CheckIfPlayerInAttackRange();
     }
 
     private bool CheckTargetVisible()
@@ -71,6 +78,16 @@ public class AiDetector : MonoBehaviour
         }
     }
 
+     private bool CheckIfPlayerInAttackRange()
+    {
+        Collider2D collision = Physics2D.OverlapCircle(transform.position, attackRadius, playerLayerMask);
+        if (collision != null)
+        {
+            return true;
+        }
+        return false;
+    }
+
     IEnumerator DetectionCoroutine()
     {
         yield return new WaitForSeconds(detectionCheckDelay);
@@ -81,7 +98,10 @@ public class AiDetector : MonoBehaviour
     private void OnDrawGizmos() 
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position,viewRadius);    
+        Gizmos.DrawWireSphere(transform.position,viewRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position,attackRadius);    
     }
 
 }

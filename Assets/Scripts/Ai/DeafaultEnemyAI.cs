@@ -19,7 +19,7 @@ public class DeafaultEnemyAI : MonoBehaviour
     }
 
     private void Update() {
-        if (detector.TargetVisible)
+        if (detector.TargetVisible && detector.TargetAttackable )
         {
             shootBehavior.PerformAction(submarine, detector);
         } else 
