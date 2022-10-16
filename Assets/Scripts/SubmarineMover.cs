@@ -5,12 +5,10 @@ using UnityEngine;
 public class SubmarineMover : MonoBehaviour
 {
     public Rigidbody2D rb2d;
-    public float maxSpeed = 10;
-    public float rotationSpeed = 100;
-    private Vector2 movementVector;
 
-    public float acceleration = 70;
-    public float deacceleration = 70;
+    public SubmarineMovementData movementData;
+
+    private Vector2 movementVector;
     public float currentSpeed = 0;
     public float currentForewardDirection = 1;
 
@@ -34,19 +32,19 @@ public class SubmarineMover : MonoBehaviour
     {
         if (Mathf.Abs(movementVector.y) > 0)
         {
-            currentSpeed += acceleration * Time.deltaTime;
+            currentSpeed += movementData.acceleration * Time.deltaTime;
         }
         else
         {
-            currentSpeed -= deacceleration * Time.deltaTime;
+            currentSpeed -= movementData.deacceleration * Time.deltaTime;
         }
-        currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
+        currentSpeed = Mathf.Clamp(currentSpeed, 0, movementData.maxSpeed);
     }
 
         private void FixedUpdate() 
     {
         rb2d.velocity = (Vector2)transform.right * currentSpeed * currentForewardDirection * Time.fixedDeltaTime;
-        rb2d.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -movementVector.x * rotationSpeed * Time.fixedDeltaTime));
+        rb2d.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -movementVector.x * movementData.rotationSpeed * Time.fixedDeltaTime));
     }
 
 }
