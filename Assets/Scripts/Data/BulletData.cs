@@ -8,4 +8,5 @@ public class BulletData : ScriptableObject
     public float speed = 100;
     public int damage = 5;
     public float maxDistance = 10;
+    public float delay = 5;
 }

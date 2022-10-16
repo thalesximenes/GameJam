@@ -12,11 +12,11 @@ TagManager:
   - Water
   - UI
   - Bullet
-  - Monster
+  - Agent
   - Hittable
   - ObstaclesMovement
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 

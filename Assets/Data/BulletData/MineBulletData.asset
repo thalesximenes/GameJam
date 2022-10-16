@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ece81feb0cf930345af7aff8e8a18076, type: 3}
-  m_Name: PlayerMovementData
+  m_Script: {fileID: 11500000, guid: 640456b1bd57b544697e54e8149a02c7, type: 3}
+  m_Name: MineBulletData
   m_EditorClassIdentifier: 
-  maxSpeed: 400
-  rotationSpeed: 200
-  acceleration: 40
-  deacceleration: 140
+  speed: 0
+  damage: 50
+  maxDistance: 50
+  delay: 5

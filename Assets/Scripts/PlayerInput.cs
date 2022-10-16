@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     private Camera mainCamera;
 
     public UnityEvent OnShoot = new UnityEvent();
+    public UnityEvent OnShootMine = new UnityEvent();
     public UnityEvent<Vector2> OnMoveBody = new UnityEvent<Vector2>();
     public UnityEvent<Vector2> OnMoveTurret = new UnityEvent<Vector2>();
 
@@ -53,6 +54,10 @@ public class PlayerInput : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             OnShoot?.Invoke();
+        }
+        else if(Input.GetMouseButtonDown(1))
+        {
+            OnShootMine?.Invoke();
         }
     }
 }

@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     private Vector2 startPosition;
     private float conquaredDistance = 0;
     private Rigidbody2D rb2d;
+    private float bulletDelay;
 
     private void Awake() {
         rb2d = GetComponent<Rigidbody2D>();
@@ -17,6 +18,7 @@ public class Bullet : MonoBehaviour
     public void Initialize(BulletData bulletData)
     {
         this.bulletData = bulletData;
+        this.bulletDelay = this.bulletData.delay;
         startPosition = transform.position;
         rb2d.velocity = transform.up * this.bulletData.speed;
     }
@@ -27,7 +29,14 @@ public class Bullet : MonoBehaviour
         if (conquaredDistance >= bulletData.maxDistance)
         {
             DisableObject();
-        } 
+        }
+
+        bulletDelay -= Time.deltaTime;
+        if (bulletDelay <= 0)
+        {
+            DisableObject();
+            bulletDelay = bulletData.delay;
+        }
     }
 
     private void DisableObject()

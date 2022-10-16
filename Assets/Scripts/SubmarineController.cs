@@ -8,6 +8,8 @@ public class SubmarineController : MonoBehaviour
     public AimTurret aimTurret;
     public Turret[] turrets;
 
+    public MineTurret[] mineTurrets;
+
     private void Awake() 
     {
         if(submarineMover == null)
@@ -20,6 +22,11 @@ public class SubmarineController : MonoBehaviour
         {       
             turrets = GetComponentsInChildren<Turret>();
         }
+
+        if(mineTurrets == null || mineTurrets.Length == 0)
+        {       
+            mineTurrets = GetComponentsInChildren<MineTurret>();
+        }
     }
 
     public void HandleShoot()
@@ -27,6 +34,14 @@ public class SubmarineController : MonoBehaviour
         foreach (var turret in turrets)
         {
             turret.Shoot();
+        }
+    }
+
+    public void HandleMineShoot()
+    {
+        foreach (var mineTurret in mineTurrets)
+        {
+            mineTurret.Shoot();
         }
     }
 
