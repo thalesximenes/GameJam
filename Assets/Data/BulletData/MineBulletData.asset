@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MineBulletData
   m_EditorClassIdentifier: 
   speed: 0
-  damage: 50
+  damage: 100
   maxDistance: 50
   delay: 5

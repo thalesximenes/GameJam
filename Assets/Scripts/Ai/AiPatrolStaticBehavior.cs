@@ -11,24 +11,17 @@ public class AiPatrolStaticBehavior : AiBehavior
     [SerializeField]
     private float currentPatrolDelay;
 
-    private void Awake() 
-    {
-        randomDirection = Random.insideUnitCircle;    
-    }
 
     public override void PerformAction(SubmarineController submarine, AiDetector detector)
     {
         float angle = Vector2.Angle(submarine.aimTurret.transform.right, randomDirection);
-        if (currentPatrolDelay <= 0 && (angle < 2))
+        Vector2 directionToGo = Vector2.zero;
+
+        if(detector.Target != null)
         {
-            randomDirection = Random.insideUnitCircle;
-        }
-        else
-        {
-            if (currentPatrolDelay > 0)
-                currentPatrolDelay -= Time.deltaTime;
-            else
-                submarine.HandleTurretMovement((Vector2)submarine.aimTurret.transform.position + randomDirection);
+            directionToGo = detector.Target.position - submarine.submarineMover.transform.position;
+            submarine.HandleMoveEnemy(detector.Target.position, submarine.submarineMover.transform.position);
+            //submarine.HandleMoveBody(directionToGo);
         }
     }
 }

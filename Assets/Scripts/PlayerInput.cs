@@ -33,7 +33,7 @@ public class PlayerInput : MonoBehaviour
     {
         Vector2 movementVector = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal"));
         OnMoveBody?.Invoke(movementVector.normalized);
-        //print(movementVector.normalized);
+        print(movementVector.normalized);
     }
 
     private void GetTurretMovement()

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: StandardBulletData
   m_EditorClassIdentifier: 
   speed: 10
-  damage: 10
+  damage: 50
   maxDistance: 10
+  delay: 1

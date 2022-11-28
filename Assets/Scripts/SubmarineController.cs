@@ -50,6 +50,11 @@ public class SubmarineController : MonoBehaviour
         submarineMover.Move(movementVector);
     }
 
+    public void HandleMoveEnemy(Vector2 position, Vector2 target)
+    {
+        submarineMover.Towards(position, target);
+    }
+
     public void HandleTurretMovement (Vector2 pointerPosition)
     {
         aimTurret.Aim(pointerPosition);

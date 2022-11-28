@@ -17,7 +17,7 @@ TagManager:
   - ObstaclesMovement
   - Player
   - Enemy
-  - 
+  - EnemyBullet
   - 
   - 
   - 
