@@ -58,17 +58,22 @@ public class SubmarineMover : MonoBehaviour
         rb2d.rotation = angle;
         direction.Normalize();
         movement = direction;
+        print(direction);
     }
 
     private void FixedUpdate() 
     {
         rb2d.velocity = (Vector2)transform.right * currentSpeed * currentForewardDirection * Time.fixedDeltaTime;
-        print((Vector2)transform.right * currentSpeed * currentForewardDirection * Time.fixedDeltaTime);
+        //print((Vector2)transform.right * currentSpeed * currentForewardDirection * Time.fixedDeltaTime);
         rb2d.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -movementVector.x * movementData.rotationSpeed * Time.fixedDeltaTime));
         if (targetLocation != Vector2.zero) 
         {
-            rb2d.MovePosition((Vector2)transform.position + (movement * movementData.maxSpeed * Time.fixedDeltaTime));
+            moveCharacter(movement);
         }
+    }
+
+    void moveCharacter(Vector2 direction){
+        rb2d.MovePosition((Vector2)transform.position + (direction * movementData.maxSpeed * Time.fixedDeltaTime));
     }
 
 }

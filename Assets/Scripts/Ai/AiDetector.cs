@@ -63,9 +63,12 @@ public class AiDetector : MonoBehaviour
 
     private void DetectIfOutOfRange()
     {
+        Collider2D collision = Physics2D.OverlapCircle(transform.position, viewRadius, playerLayerMask);
         if (Target == null || Target.gameObject.activeSelf == false || Vector2.Distance(transform.position, Target.position) > viewRadius)
         {
             Target = null;
+        } else {
+            Target = collision.transform;
         }
     }
 
@@ -78,7 +81,7 @@ public class AiDetector : MonoBehaviour
         }
     }
 
-     private bool CheckIfPlayerInAttackRange()
+    private bool CheckIfPlayerInAttackRange()
     {
         Collider2D collision = Physics2D.OverlapCircle(transform.position, attackRadius, playerLayerMask);
         if (collision != null)
