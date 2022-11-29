@@ -20,10 +20,9 @@ public class DeafaultEnemyAI : MonoBehaviour
     }
 
     private void Update() {
-        if ((detector.TargetVisible && detector.TargetAttackable) || count > 0 )
+        if (detector.TargetVisible && (detector.TargetAttackable || count > 0))
         {
             if (count < 0) count = 3;
-
             shootBehavior.PerformAction(submarine, detector);
             count-= Time.deltaTime;
         } else 

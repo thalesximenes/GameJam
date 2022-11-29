@@ -17,11 +17,13 @@ public class AiPatrolStaticBehavior : AiBehavior
         float angle = Vector2.Angle(submarine.aimTurret.transform.right, randomDirection);
         Vector2 directionToGo = Vector2.zero;
 
-        if(detector.Target != null)
+        if(detector.Target != null && detector.TargetVisible != null)
         {
             directionToGo = detector.Target.position - submarine.submarineMover.transform.position;
             submarine.HandleMoveEnemy(detector.Target.position, submarine.submarineMover.transform.position);
             //submarine.HandleMoveBody(directionToGo);
+        } else {
+            submarine.HandleMoveBody(Vector2.zero);
         }
     }
 }

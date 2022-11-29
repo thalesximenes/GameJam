@@ -58,7 +58,7 @@ public class SubmarineMover : MonoBehaviour
         rb2d.rotation = angle;
         direction.Normalize();
         movement = direction;
-        print(direction);
+        //print(direction);
     }
 
     private void FixedUpdate() 
